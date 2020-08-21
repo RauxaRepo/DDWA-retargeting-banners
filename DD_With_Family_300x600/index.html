@@ -53,18 +53,56 @@
             width: 300px;
             height: 600px;
             overflow:hidden;
-            opacity: 1;
             background:url('./images/background_purple.jpg') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
             background-color: #6f8db3;
         }
 
-        .dd_logo, .dd_button {
+        .dd_logo {
             position: absolute;
             top: 0;
             left: 0;
             width: 300px;
+            height: 600px;
+            border:0;
+        }
+
+        .dd_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            overflow:hidden;
+            cursor: pointer;
+            z-index: 18;
+        }
+
+        .grow_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            overflow:hidden;
+            transition: transform .25s ease;
+            background:url('./images/get_a_quote_purple_300x600_2x.png') no-repeat;
+            background-size: 300px 600px;
+            background-position:0px 0px;
+        }
+
+        .grow_button:hover, .grow_button:active {
+            -webkit-transform: scale(1.1); 
+            -ms-transform: scale(1.1); 
+            transform: scale(1.1) translate(4%, 0); 
+        }
+
+        .copy_shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 338px;
             height: 600px;
             border:0;
         }
@@ -80,7 +118,7 @@
             left: 0px;
         }
 
-        .exit_1 {
+       /* .exit_1 {
             position: absolute;
             width: 300px;
             height: 600px;
@@ -88,7 +126,7 @@
             top: 0;
             left: 0;
             cursor: pointer;
-        }
+        }*/
 
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -102,6 +140,7 @@
             var copyShadow = document.querySelector('.copy_shadow');
             var ddLogo = document.querySelector('.dd_logo');
             var ddButton = document.querySelector('.dd_button');
+            var ddButton2 = document.querySelector('.grow_button');
             // elements
             var bannerContent = document.querySelector('.banner-content');
 
@@ -113,6 +152,7 @@
                     './images/background_purple.jpg',
                     './images/copy_shadow_purple_300x600.png',
                     './images/dd_logo_w_300x600_2x.png',
+                    './images/get_a_quote_purple_300x600.png',
                     './images/get_a_quote_purple_300x600_2x.png',
                 ];
 
@@ -130,6 +170,7 @@
                     copyShadow.src = images[1];
                     ddLogo.src = images[2];
                     ddButton.src = images[3];
+                    ddButton2.scr = images[4];
                     init();
                }
             }
@@ -144,6 +185,8 @@
                  loop++; 
                 }
 
+
+
          /*    const tl2 = new TimelineMax({paused:true});
              tl2
              .to(tearSVG, .5, {y:20, x:0, ease: Power1.easeOut})
@@ -153,23 +196,27 @@
 
 
           //   TweenMax.set(faceBackground, {scale: 1.4,transformOrigin: "50% 75%"});
-             //TweenMax.set([see_svg, hear_svg, speak_svg, exit2], {autoAlpha:0});
+             TweenMax.set(ddButton2, {autoAlpha:0});
+             TweenMax.set(copyShadow, {rotation:2});
              const tl = new TimelineMax();
 
               tl
+
+
               .from(copyShadow,.6, {y:600, x:500, ease: Sine.easeInOut},'+=.5')
-              .to(copyShadow,1,{ease: Bounce.easeInOut})
-              .from(ddButton,.6, {y:600, x:360, ease: Sine.easeInOut},'-=1')
-              .to(ddButton,1,{ease: Bounce.easeInOut})
-             // .to(ddButton,0.7,{rotation:8})
-              //.to([copyShadow, ddButton],7,{rotation:0,ease:Elastic.easeOut.config(0.9,0.1)});
+              .to(copyShadow,2.5,{rotation:0,ease:Elastic.easeOut.config(0.8,0.1), yoyo: true})
+            //  .to(copyShadow,.5,{rotation:0,ease:Elastic.easeOut.config(0.1,0.5)})
+           //   .to(copyShadow,1,{rotation:0,ease:Elastic.easeOut.config(0.8,0.1), repeat:1, repeatDelay:3})
+              .from(ddButton,.8, {y:600, x:300, ease: Sine.easeInOut},'-=.1')
+              .to(ddButton,.0,{autoAlpha: 0})            
+              .to(ddButton2,.0,{autoAlpha: 1})
+           //   .to(ddButton,1,{rotation:2,ease:Elastic.easeOut.config(0.9,0.1)})
 
             /*  .addCallback(function(){
                 tl2.tweenTo('firstDrop')
               },'-=.5')*/
 
               ;
-
 
               setTimeout(function(){
                  console.log('done');
@@ -186,16 +233,19 @@
 <body>
     <div id="container" class="container b-300x600" style="background-color: #fff;">
         <div class="banner-content">
-            <div class="dot_background">
+            <div class="dot_background"></div>
+
                 <img src="" alt="" class="dd_logo" />
                 <img src="" alt="" class="copy_shadow" />
-                <img src="" alt="" class="dd_button"> 
-            </div>
+                <img src="" alt="Get a quote" class="dd_button" />
+                <div class="grow_button"></div>
+            
         </div><!-- end banner content -->
 
         <div class="banner-border"></div>
-        <a class="exit_1" href="javascript:window.open(window.clickTag1)"></a>
-    </div>
+        <a href="javascript:window.open(window.clickTag1)"></a>
+     </div>
+
         
   </body>
 </html>
