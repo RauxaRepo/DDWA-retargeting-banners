@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="ad.size" content="width=300,height=600">
+    <script type="text/javascript">
+        var clickTag1 = "https://www.doubleclickbygoogle.com/";
+    </script>
+    <script type="text/javascript">
+        var clickTag2 = "https://www.doubleclickbygoogle.com/";
+    </script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_2.0.1_min.js"></script>
+
+    <style type="text/css">
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        * { 
+            padding: 0;
+        }
+        .container {
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+
+        }
+        .banner-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            display: none;
+        }
+        .banner-content.banner-content--active {
+            opacity: 1;
+            display: block;
+        }
+
+        .b-300x600 {
+            width: 300px;
+            height: 600px;
+            padding: 0;
+        }
+
+       .dot_background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            overflow:hidden;
+            opacity: 1;
+            background:url('./images/background_purple.jpg') no-repeat;
+            background-size: 300px 600px;
+            background-position:0px 0px;
+            background-color: #6f8db3;
+        }
+
+        .dd_logo, .dd_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            border:0;
+        }
+
+        .banner-border {
+            position: absolute;
+            width: 298px;
+            height: 598px;
+            border: 1px solid #222;
+            pointer-events: none;
+            z-index: 15;
+            top: 0px;
+            left: 0px;
+        }
+
+        .exit_1 {
+            position: absolute;
+            width: 300px;
+            height: 600px;
+            z-index: 18;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+
+        document.addEventListener("DOMContentLoaded", function(e) {
+
+            // variables
+            var loadedImage = 0;
+            var images = [];
+            var dotBackground = document.querySelector('.dot_background');
+            var copyShadow = document.querySelector('.copy_shadow');
+            var ddLogo = document.querySelector('.dd_logo');
+            var ddButton = document.querySelector('.dd_button');
+            // elements
+            var bannerContent = document.querySelector('.banner-content');
+
+
+
+
+            function preload() {
+                images = [
+                    './images/background_purple.jpg',
+                    './images/copy_shadow_purple_300x600.png',
+                    './images/dd_logo_w_300x600_2x.png',
+                    './images/get_a_quote_purple_300x600_2x.png',
+                ];
+
+                for (var i = 0; i < images.length; i++) {
+                    var imageObj = new Image();
+                    imageObj.src = images[i];
+                    imageObj.addEventListener("load", iLoad, false);
+                }
+               // console.log('Entering preload');
+            }
+            function iLoad() {
+                loadedImage++;
+                if (images.length == loadedImage) {
+                    dotBackground.src = images[0];
+                    copyShadow.src = images[1];
+                    ddLogo.src = images[2];
+                    ddButton.src = images[3];
+                    init();
+               }
+            }
+
+            function init() {
+                console.log('init');
+                bannerContent.classList.add('banner-content--active');
+
+                var loop = 0;
+
+              function checkLoop() {
+                 loop++; 
+                }
+
+         /*    const tl2 = new TimelineMax({paused:true});
+             tl2
+             .to(tearSVG, .5, {y:20, x:0, ease: Power1.easeOut})
+             .addLabel('firstDrop')
+             .to(tearSVG, .6, {y:40, x:0, ease: Power1.easeOut})
+             .addLabel('secondDrop')*/
+
+
+          //   TweenMax.set(faceBackground, {scale: 1.4,transformOrigin: "50% 75%"});
+             //TweenMax.set([see_svg, hear_svg, speak_svg, exit2], {autoAlpha:0});
+             const tl = new TimelineMax();
+
+              tl
+              .from(copyShadow,.6, {y:600, x:500, ease: Sine.easeInOut},'+=.5')
+              .to(copyShadow,1,{ease: Bounce.easeInOut})
+              .from(ddButton,.6, {y:600, x:360, ease: Sine.easeInOut},'-=1')
+              .to(ddButton,1,{ease: Bounce.easeInOut})
+             // .to(ddButton,0.7,{rotation:8})
+              //.to([copyShadow, ddButton],7,{rotation:0,ease:Elastic.easeOut.config(0.9,0.1)});
+
+            /*  .addCallback(function(){
+                tl2.tweenTo('firstDrop')
+              },'-=.5')*/
+
+              ;
+
+
+              setTimeout(function(){
+                 console.log('done');
+                },15000)
+            }
+
+              window.onload = function(e) {
+              preload();
+            }
+
+        });
+    </script>
+    </head>
+<body>
+    <div id="container" class="container b-300x600" style="background-color: #fff;">
+        <div class="banner-content">
+            <div class="dot_background">
+                <img src="" alt="" class="dd_logo" />
+                <img src="" alt="" class="copy_shadow" />
+                <img src="" alt="" class="dd_button"> 
+            </div>
+        </div><!-- end banner content -->
+
+        <div class="banner-border"></div>
+        <a class="exit_1" href="javascript:window.open(window.clickTag1)"></a>
+    </div>
+        
+  </body>
+</html>
