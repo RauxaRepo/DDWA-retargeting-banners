@@ -77,7 +77,7 @@
             overflow:hidden;
         }      
 
-        .dd_button, .dd_button_wrapper{
+        .dd_button_wrapper{
             position: absolute;
             top: 0;
             left: 0;
@@ -147,8 +147,8 @@
             var dotBackground = document.querySelector('.dot_background');
             var copyShadow = document.querySelector('.copy_shadow');
             var ddLogo = document.querySelector('.dd_logo');
-            var ddButton = document.querySelector('.dd_button');
-            var ddButton2 = document.querySelector('.grow_button');
+           // var ddButton = document.querySelector('.dd_button');
+            var ddButton = document.querySelector('.grow_button');
             var bounceBox = document.querySelector('.bounce_box');
             var ddButtonWrapper = document.querySelector('.dd_button_wrapper');
             
@@ -163,7 +163,6 @@
                     './images/background_purple.jpg',
                     './images/copy_shadow_purple_300x600.png',
                     './images/dd_logo_w_300x600_2x.png',
-                    './images/get_a_quote_purple_300x600.png',
                     './images/get_a_quote_purple_300x600_2x.png',
                 ];
 
@@ -181,7 +180,6 @@
                     copyShadow.src = images[1];
                     ddLogo.src = images[2];
                     ddButton.src = images[3];
-                    ddButton2.scr = images[4];
                     init();
                }
             }
@@ -203,24 +201,16 @@
             .from(copyShadow,.6, {y:600, x:500, ease: Power1.easeOut},'+=.2')
             .to(copyShadow,3,{rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true})
             .fromTo(bounceBox,5,{y:-16, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
-            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=6')
-            .fromTo(bounceBox,4,{y:-14, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,2), yoyo: true},'-=3')
-         //   .fromTo(bounceBox,3.5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,2), yoyo: true},'-=3')
+            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeIn.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=6')
+            .fromTo(bounceBox,4,{y:-14, x:-7, scale: 1.05, ease:Elastic.easeIn.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1), yoyo: true},'-=3');
 
-            ;
 
-             TweenMax.set(ddButton2, {autoAlpha:0});
-             TweenMax.set([ddButtonWrapper], {rotation:-4});
+             TweenMax.set([ddButtonWrapper], {rotation:-2});
              const tl2 = new TimelineMax();
              tl2
-            .from(ddButton,.8, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
+            .from(ddButtonWrapper,.7, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
             .to(ddButtonWrapper,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
-            .to(ddButton,.0,{autoAlpha: 0}) 
-            .to(ddButton2,.0,{autoAlpha: 1})
-            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeOut.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4')
-            ;
-
-
+            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeIn.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4');
 
 
               setTimeout(function(){
@@ -243,7 +233,7 @@
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
                 <div class="dd_button_wrapper">
-                    <img src="" alt="Get a quote" class="dd_button" />
+                    <!--<img src="" alt="Get a quote" class="dd_button" />-->
                     <div class="grow_button"></div>
                 </div>
             </div>        
