@@ -77,15 +77,13 @@
             overflow:hidden;
         }      
 
-        .dd_button {
+        .dd_button, .dd_button_wrapper{
             position: absolute;
             top: 0;
             left: 0;
             width: 300px;
             height: 600px;
             overflow:hidden;
-            cursor: pointer;
-            z-index: 18;
         }
 
         .grow_button {
@@ -99,6 +97,7 @@
             background:url('./images/get_a_quote_purple_300x600_2x.png') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
+            cursor: pointer;
         }
 
         .grow_button:hover, .grow_button:active {
@@ -151,6 +150,8 @@
             var ddButton = document.querySelector('.dd_button');
             var ddButton2 = document.querySelector('.grow_button');
             var bounceBox = document.querySelector('.bounce_box');
+            var ddButtonWrapper = document.querySelector('.dd_button_wrapper');
+            
             // elements
             var bannerContent = document.querySelector('.banner-content');
 
@@ -201,20 +202,22 @@
              tl
             .from(copyShadow,.6, {y:600, x:500, ease: Power1.easeOut},'+=.2')
             .to(copyShadow,3,{rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true})
-            .fromTo(bounceBox,5,{y:-20, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
+            .fromTo(bounceBox,5,{y:-16, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
+         //   .fromTo(bounceBox,5,{y:-20, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
 
             .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=5')
-            .fromTo(bounceBox,5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.1), yoyo: true},'-=5')
+            .fromTo(bounceBox,3.5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.1), yoyo: true},'-=3')
             ;
 
              TweenMax.set(ddButton2, {autoAlpha:0});
-             TweenMax.set(ddButton, {rotation:-3});
+             TweenMax.set([ddButton], {rotation:-4});
              const tl2 = new TimelineMax();
              tl2
-            .from(ddButton,.8, {y:500, x:400, ease: Sine.easeInOut},'+=.5')
+            .from(ddButton,.8, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
             .to(ddButton,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
             .to(ddButton,.0,{autoAlpha: 0}) 
             .to(ddButton2,.0,{autoAlpha: 1})
+            .fromTo(ddButtonWrapper, 3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=5')
             ;
 
 
@@ -239,14 +242,13 @@
             <img src="" alt="" class="dd_logo" />
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
-                <img src="" alt="Get a quote" class="dd_button" />
-                <div class="grow_button"></div>
-            </div>
-
-
-
-            
+                <div class="dd_button_wrapper">
+                    <img src="" alt="Get a quote" class="dd_button" />
+                    <div class="grow_button"></div>
+                </div>
+            </div>        
         </div><!-- end banner content -->
+
 
         <div class="banner-border"></div>
         <a href="javascript:window.open(window.clickTag1)"></a>
