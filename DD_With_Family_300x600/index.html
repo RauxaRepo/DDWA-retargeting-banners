@@ -203,21 +203,21 @@
             .from(copyShadow,.6, {y:600, x:500, ease: Power1.easeOut},'+=.2')
             .to(copyShadow,3,{rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true})
             .fromTo(bounceBox,5,{y:-16, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
-         //   .fromTo(bounceBox,5,{y:-20, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
+            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=6')
+            .fromTo(bounceBox,4,{y:-14, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,2), yoyo: true},'-=3')
+         //   .fromTo(bounceBox,3.5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,2), yoyo: true},'-=3')
 
-            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=5')
-            .fromTo(bounceBox,3.5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.1), yoyo: true},'-=3')
             ;
 
              TweenMax.set(ddButton2, {autoAlpha:0});
-             TweenMax.set([ddButton], {rotation:-4});
+             TweenMax.set([ddButtonWrapper], {rotation:-4});
              const tl2 = new TimelineMax();
              tl2
             .from(ddButton,.8, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
-            .to(ddButton,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
+            .to(ddButtonWrapper,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
             .to(ddButton,.0,{autoAlpha: 0}) 
             .to(ddButton2,.0,{autoAlpha: 1})
-            .fromTo(ddButtonWrapper, 3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=5')
+            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeOut.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4')
             ;
 
 
