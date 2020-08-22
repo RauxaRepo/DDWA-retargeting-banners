@@ -68,6 +68,15 @@
             border:0;
         }
 
+        .bounce_box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            overflow:hidden;
+        }      
+
         .dd_button {
             position: absolute;
             top: 0;
@@ -141,6 +150,7 @@
             var ddLogo = document.querySelector('.dd_logo');
             var ddButton = document.querySelector('.dd_button');
             var ddButton2 = document.querySelector('.grow_button');
+            var bounceBox = document.querySelector('.bounce_box');
             // elements
             var bannerContent = document.querySelector('.banner-content');
 
@@ -186,37 +196,29 @@
                 }
 
 
-
-         /*    const tl2 = new TimelineMax({paused:true});
-             tl2
-             .to(tearSVG, .5, {y:20, x:0, ease: Power1.easeOut})
-             .addLabel('firstDrop')
-             .to(tearSVG, .6, {y:40, x:0, ease: Power1.easeOut})
-             .addLabel('secondDrop')*/
-
-
-          //   TweenMax.set(faceBackground, {scale: 1.4,transformOrigin: "50% 75%"});
-             TweenMax.set(ddButton2, {autoAlpha:0});
-             TweenMax.set(copyShadow, {rotation:2});
+             TweenMax.set(copyShadow, {rotation:3});
              const tl = new TimelineMax();
+             tl
+            .from(copyShadow,.6, {y:600, x:500, ease: Power1.easeOut},'+=.2')
+            .to(copyShadow,3,{rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true})
+            .fromTo(bounceBox,5,{y:-20, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
 
-              tl
+            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeOut.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=5')
+            .fromTo(bounceBox,5,{y:-10, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.1), yoyo: true},'-=5')
+            ;
+
+             TweenMax.set(ddButton2, {autoAlpha:0});
+             TweenMax.set(ddButton, {rotation:-3});
+             const tl2 = new TimelineMax();
+             tl2
+            .from(ddButton,.8, {y:500, x:400, ease: Sine.easeInOut},'+=.5')
+            .to(ddButton,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
+            .to(ddButton,.0,{autoAlpha: 0}) 
+            .to(ddButton2,.0,{autoAlpha: 1})
+            ;
 
 
-              .from(copyShadow,.6, {y:600, x:500, ease: Sine.easeInOut},'+=.5')
-              .to(copyShadow,2.5,{rotation:0,ease:Elastic.easeOut.config(0.8,0.1), yoyo: true})
-            //  .to(copyShadow,.5,{rotation:0,ease:Elastic.easeOut.config(0.1,0.5)})
-           //   .to(copyShadow,1,{rotation:0,ease:Elastic.easeOut.config(0.8,0.1), repeat:1, repeatDelay:3})
-              .from(ddButton,.8, {y:600, x:300, ease: Sine.easeInOut},'-=.1')
-              .to(ddButton,.0,{autoAlpha: 0})            
-              .to(ddButton2,.0,{autoAlpha: 1})
-           //   .to(ddButton,1,{rotation:2,ease:Elastic.easeOut.config(0.9,0.1)})
 
-            /*  .addCallback(function(){
-                tl2.tweenTo('firstDrop')
-              },'-=.5')*/
-
-              ;
 
               setTimeout(function(){
                  console.log('done');
@@ -234,11 +236,15 @@
     <div id="container" class="container b-300x600" style="background-color: #fff;">
         <div class="banner-content">
             <div class="dot_background"></div>
-
-                <img src="" alt="" class="dd_logo" />
+            <img src="" alt="" class="dd_logo" />
+            <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
                 <img src="" alt="Get a quote" class="dd_button" />
                 <div class="grow_button"></div>
+            </div>
+
+
+
             
         </div><!-- end banner content -->
 
