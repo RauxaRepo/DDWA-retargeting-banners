@@ -83,25 +83,34 @@
             overflow:hidden;
         }
 
-        .dd_button {
+        .dd_buttonX {
             position: absolute;
             top: 0;
             left: 0;
             width: 300px;
             height: 600px;
             overflow:hidden;
-            transition: transform .25s ease;
+          /*  transition: transform .25s ease;*/
             background:url('./images/get_a_quote_purple_300x600_2x.png') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
             cursor: pointer;
         }
 
-        .dd_button:hover, .dd_button:active {
+        #dd_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 600px;
+            overflow:hidden;
+        }
+
+     /* .dd_button:hover, .dd_button:active {
             -webkit-transform: scale(1.1); 
             -ms-transform: scale(1.1); 
             transform: scale(1.1) translate(4%, 0); 
-        }
+        }*/
 
         .copy_shadow {
             position: absolute;
@@ -123,11 +132,11 @@
             left: 0px;
         }
 
-       .exit{
+       .exit {
             position: absolute;
             width: 300px;
             height: 600px;
-            z-index: 18;
+            z-index: 20;
             top: 0;
             left: 0;
             cursor: pointer;
@@ -144,7 +153,7 @@
             var dotBackground = document.querySelector('.dot_background');
             var copyShadow = document.querySelector('.copy_shadow');
             var ddLogo = document.querySelector('.dd_logo');
-            var ddButton = document.querySelector('.dd_button');
+            var ddButton = document.querySelector('#dd_button');
             var bounceBox = document.querySelector('.bounce_box');
             var ddButtonWrapper = document.querySelector('.dd_button_wrapper');
             
@@ -200,12 +209,27 @@
             .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeIn.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=6')
             .fromTo(bounceBox,4,{y:-14, x:-7, scale: 1.05, ease:Elastic.easeIn.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1), yoyo: true},'-=3');
 
+
              TweenMax.set([ddButtonWrapper], {rotation:-2});
              const tl2 = new TimelineMax();
              tl2
             .from(ddButtonWrapper,.7, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
             .to(ddButtonWrapper,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
-            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeIn.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4');
+            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeIn.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4')
+            ;
+
+
+            const tl3 = new TimelineMax({paused: true});
+            tl3.play();
+            TweenMax.to(ddButton, .5, {scale: 1.05, ease:Elastic.easeOut.config(1.5,2)});
+
+            ddButton.addEventListener("mouseenter", function(){
+            tl3.play();
+            });
+
+            ddButton.addEventListener("mouseleave", function(){
+            tl3.reverse();
+            });
 
 
               setTimeout(function(){
@@ -223,20 +247,20 @@
 <body>
     <div id="container" class="container b-300x600" style="background-color: #fff;">
         <div class="banner-content">
-            </a>
             <div class="dot_background"></div>
             <img src="" alt="" class="dd_logo" />
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
-
                 <div class="dd_button_wrapper">
-                    <a href="javascript:window.open(window.clickTag)">
-                       <div class="dd_button"></div>
-                    </a>
+                   <img src="" alt="" id="dd_button" />
+                   <!--<div id="dd_button"></div> -->
                 </div>
             </div>        
         </div><!-- end banner content -->
+
+
         <div class="banner-border"></div>
+        <!-- <a class="exit" href="javascript:window.open(window.clickTag)"></a> -->
      </div>
 
         
