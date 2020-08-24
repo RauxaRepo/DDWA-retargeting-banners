@@ -196,9 +196,9 @@
             .from(copyShadow,.8, {y:900, x:400, ease:Elastic.easeOut.config(1,1.2)},'+=.2')
             .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.05, ease:Elastic.easeOut.config(1.5,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
 
-            .to(copyShadow,.5,{rotation:-2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'6.0')
+            .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'6.0')
             .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)})
-            .to(copyShadow,.5,{rotation:-2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=6')
+            .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=5.9')
             .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
 
          //  .to(copyShadow,.5,{rotation:-2, y:70, x:60, scale: 1.05, ease:Elastic.easeIn.config(.9,1.5)},'6.0')
@@ -207,18 +207,13 @@
          //   .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)});
 
 
-          //  .to(copyShadow,.4,{rotation:-2, y:-40, x:10, scale: 1.05, ease:Elastic.easeIn.config(.5,1)},'6.0')
-         //   .to(copyShadow,.6,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)})
-          //  .to(copyShadow,.4,{rotation:-2, y:-40, x:10, scale: 1.05, ease:Elastic.easeIn.config(.5,1)},'+=6')
-         //   .to(copyShadow,.6,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)});
-
              const tl2 = new TimelineMax();
              tl2
             .from(ddButtonWrapper,.7, {y:800, x:400, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
 
-            .to(ddButtonWrapper,.5,{rotation:2, y:30, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'6.0')
-            .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)})
-            .to(ddButtonWrapper,.5,{rotation:2, y:30, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=6')
+            .to(ddButtonWrapper,.5,{rotation:-2, y:34, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'5.9')
+            .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)},'+=0.1')
+            .to(ddButtonWrapper,.5,{rotation:-2, y:36, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=6')
             .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
 
        //     .to(ddButtonWrapper,.5,{rotation:2, y:60, x:50, scale: 1.05, ease:Elastic.easeIn.config(.9,1.5)},'6.0')
@@ -226,10 +221,6 @@
         //    .to(ddButtonWrapper,.5,{rotation:2, y:60, x:50, scale: 1.05, ease:Elastic.easeIn.config(.5,1.5)},'+=6')
         //    .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)});
 
-         //   .to(ddButtonWrapper,.4,{rotation:2, y:-30, x:12, scale: 1.05, ease:Elastic.easeIn.config(.5,1)},'6.0')
-         //   .to(ddButtonWrapper,.6,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)})
-         //   .to(ddButtonWrapper,.4,{rotation:2, y:-30, x:12, scale: 1.05, ease:Elastic.easeIn.config(.5,1)},'+=6')
-         //   .to(ddButtonWrapper,.6,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.9,1.5)});
 
 
               setTimeout(function(){
