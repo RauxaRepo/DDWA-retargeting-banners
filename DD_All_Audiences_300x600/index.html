@@ -6,7 +6,7 @@
     <title></title>
     <meta name="ad.size" content="width=300,height=600">
     <script type="text/javascript">
-        var clickTag = "https://www.doubleclickbygoogle.com/";
+        var clickTag = "https://www.google.com/";
     </script>
     <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_2.0.1_min.js"></script>
 
@@ -50,10 +50,10 @@
             width: 300px;
             height: 600px;
             overflow:hidden;
-            background:url('./images/background_purple.jpg') no-repeat;
+            background:url('./images/background_orange_300x600.jpg') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
-            background-color: #6f8db3;
+            background-color: #ea9b7f;
         }
 
         .dd_logo {
@@ -91,7 +91,7 @@
             height: 600px;
             overflow:hidden;
             transition: transform .25s ease;
-            background:url('./images/get_a_quote_purple_300x600_2x.png') no-repeat;
+            background:url('./images/get_a_quote_orange_300x600_2x.png') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
             cursor: pointer;
@@ -107,8 +107,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 338px;
-            height: 600px;
+            width: 450px;
+            height: 700px;
             border:0;
         }
 
@@ -156,10 +156,10 @@
 
             function preload() {
                 images = [
-                    './images/background_purple.jpg',
-                    './images/copy_shadow_purple_300x600.png',
+                    './images/background_orange_300x600.jpg',
+                    './images/copy_shadow_orange_300x600.png',
                     './images/dd_logo_w_300x600_2x.png',
-                    './images/get_a_quote_purple_300x600_2x.png',
+                    './images/get_a_quote_orange_300x600_2x.png',
                 ];
 
                 for (var i = 0; i < images.length; i++) {
@@ -191,22 +191,25 @@
                 }
 
 
-             TweenMax.set(copyShadow, {rotation:3});
              const tl = new TimelineMax();
              tl
-            .from(copyShadow,.6, {y:600, x:500, ease: Power1.easeOut},'+=.2')
-            .to(copyShadow,3,{rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true})
-            .fromTo(bounceBox,5,{y:-16, x:-7, scale: 1.05, ease:Elastic.easeOut.config(1,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,.08), yoyo: true},'-=3')
-            .fromTo(copyShadow,3,{rotation:3, ease:Elastic.easeIn.config(1,0.5)}, {rotation:0, ease:Elastic.easeOut.config(1.5,0.1), yoyo: true},'+=6')
-            .fromTo(bounceBox,4,{y:-14, x:-7, scale: 1.05, ease:Elastic.easeIn.config(1.5,2)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1), yoyo: true},'-=3');
+            .from(copyShadow,.8, {y:900, x:400, ease:Elastic.easeOut.config(1,1.2)},'+=.2')
+            .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.05, ease:Elastic.easeOut.config(1.5,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
 
-             TweenMax.set([ddButtonWrapper], {rotation:-2});
+            .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'6.0')
+            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)})
+            .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=5.9')
+            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
+
+
              const tl2 = new TimelineMax();
              tl2
-            .from(ddButtonWrapper,.7, {y:500, x:400, ease: Sine.easeInOut},'+=.6')
-            .to(ddButtonWrapper,3,{rotation:0, ease:Elastic.easeOut.config(1,0.1), yoyo: true})
-            .fromTo(ddButtonWrapper, 4,{rotation:-5, ease:Elastic.easeIn.config(2,0.2)}, {rotation:0, ease:Elastic.easeOut.config(1,0.1)},'+=7.4');
+            .from(ddButtonWrapper,.7, {y:800, x:400, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
 
+            .to(ddButtonWrapper,.5,{rotation:-1, y:34, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'5.9')
+            .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)},'+=0.1')
+            .to(ddButtonWrapper,.5,{rotation:-1, y:34, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=6')
+            .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
 
               setTimeout(function(){
                  console.log('done');
