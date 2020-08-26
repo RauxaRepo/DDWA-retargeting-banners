@@ -90,18 +90,12 @@
             width: 300px;
             height: 600px;
             overflow:hidden;
-            transition: transform .25s ease;
             background:url('./images/get_a_quote_purple_300x600_2x.png') no-repeat;
             background-size: 300px 600px;
             background-position:0px 0px;
             cursor: pointer;
         }
 
-        .dd_button:hover, .dd_button:active {
-            -webkit-transform: scale(1.1); 
-            -ms-transform: scale(1.1); 
-            transform: scale(1.1) translate(4%, 0); 
-        }
 
         .copy_shadow {
             position: absolute;
@@ -195,35 +189,33 @@
              tl
             .from(copyShadow,.8, {y:900, x:400, ease:Elastic.easeOut.config(1,1.2)},'+=.2')
             .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.05, ease:Elastic.easeOut.config(1.5,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
-
             .to(copyShadow,.5,{rotation:2, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'6.0')
-            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)})
+            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)})
             .to(copyShadow,.5,{rotation:2, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'+=5.9')
-            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)});
-
-         //   .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'6.0')
-         //   .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)})
-         //   .to(copyShadow,.5,{rotation:2, y:35, x:30, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=5.9')
-         //   .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
-
-
+            .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
 
 
              const tl2 = new TimelineMax();
              tl2
             .from(ddButtonWrapper,.7, {y:800, x:400, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
-
             .to(ddButtonWrapper,.5,{rotation:-1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'5.9')
             .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)},'+=0.1')
             .to(ddButtonWrapper,.5,{rotation:-1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'+=6')
             .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)});
 
-         //   .to(ddButtonWrapper,.5,{rotation:-1, y:34, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'5.9')
-         //   .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)},'+=0.1')
-         //   .to(ddButtonWrapper,.5,{rotation:-1, y:34, x:25, scale: 1.05, ease:Elastic.easeIn.config(.6,1.2)},'+=6')
-         //   .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,1.2)});
 
+             const tl3 = new TimelineMax({paused: true});
+             tl3
+             .to(ddButton, .25, {scale: 1.1, y:0, x:12, ease:Sine.easeInOut})
 
+             ddButton.addEventListener("mouseenter", function(){
+             tl3.play();
+             })
+
+             ddButton.addEventListener("mouseleave", function(){
+             tl3.reverse();
+             });
+            
 
 
               setTimeout(function(){
