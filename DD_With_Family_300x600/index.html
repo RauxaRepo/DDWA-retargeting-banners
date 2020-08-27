@@ -121,7 +121,7 @@
             position: absolute;
             width: 300px;
             height: 600px;
-            z-index: 18;
+           // z-index: 18;
             top: 0;
             left: 0;
             cursor: pointer;
@@ -233,16 +233,14 @@
 <body>
     <div id="container" class="container b-300x600" style="background-color: #fff;">
         <div class="banner-content">
-            </a>
+            <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>   
             <div class="dot_background"></div>
             <img src="" alt="" class="dd_logo" />
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
 
                 <div class="dd_button_wrapper">
-                    <a href="javascript:(window.open(window.clickTag))">
                     <div class="dd_button"></div>
-                    </a>
                 </div>
             </div>        
         </div><!-- end banner content -->
