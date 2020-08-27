@@ -186,26 +186,26 @@
 
              const tl = new TimelineMax();
              tl
-            .from(copyShadow,.8, {y:700, x:800, ease:Elastic.easeOut.config(1,1.1)},'+=.5')
-            .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.06, ease:Elastic.easeOut.config(1.5,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
-            .to(copyShadow,.5,{y:17, x:17, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'6.0')
-            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.8,.9)})
-            .to(copyShadow,.5,{y:17, x:20, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'+=5.9')
-            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.8,.9)});
+            .from(copyShadow,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1.1)},'+=.5')
+            .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.06, ease:Elastic.easeOut.config(1.2,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
+            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'6.0')
+            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)})
+            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'+=5.9')
+            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
 
 
              const tl2 = new TimelineMax();
              tl2
-            .from(ddButtonWrapper,.8, {y:700, x:800, ease:Elastic.easeOut.config(1,1)},'+=.6')
-            .to(ddButtonWrapper,.5,{y:15, x:13, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'5.9')
-            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.8,.9)},'+=0.1')
-            .to(ddButtonWrapper,.5,{y:15, x:13, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'+=6')
-            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.8,.9)});
+            .from(ddButtonWrapper,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
+            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'5.9')
+            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)},'+=.1')
+            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'+=6')
+            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
 
 
              const tl3 = new TimelineMax({paused: true});
              tl3
-             .to(ddButton, .25, {scale: 1.1, y:6, x:-24, ease:Sine.easeInOut})
+             .to(ddButton, .25, {scale: 1.1, y:3, x:-24, ease:Sine.easeInOut})
 
              ddButton.addEventListener("mouseenter", function(){
              tl3.play();
@@ -237,7 +237,7 @@
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
                 <div class="dd_button_wrapper">
-                    <a href="javascript:void(window.open(window.clickTag))">
+                    <a href="javascript:(window.open(window.clickTag))">
                        <div class="dd_button"></div>
                     </a>
                 </div>
