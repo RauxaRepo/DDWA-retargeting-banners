@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title></title>
-    <meta name="ad.size" content="width=300,height=600">
+    <meta name="ad.size" content="width=300,height=250">
     <script type="text/javascript">
         var clickTag = "https://www.google.com/";
     </script>
@@ -37,9 +37,9 @@
             display: block;
         }
 
-        .b-300x600 {
+        .b-300x250 {
             width: 300px;
-            height: 600px;
+            height: 250px;
             padding: 0;
         }
 
@@ -48,20 +48,20 @@
             top: 0;
             left: 0;
             width: 300px;
-            height: 600px;
+            height: 250px;
             overflow:hidden;
-            background:url('./images/background_orange_300x600_2x.png') no-repeat;
-            background-size: 300px 600px;
+            background:url('./images/background_green_300x250_2x.png') no-repeat;
+            background-size: 300px 250px;
             background-position:0px 0px;
-            background-color: #ea9b7f;
+            background-color: #8ed07c;
         }
 
         .dd_logo {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 300px;
-            height: 600px;
+            top: 220px;
+            left: 125px;
+            width: 175px;
+            height: 30px;
             border:0;
         }
 
@@ -70,7 +70,7 @@
             top: 0;
             left: 0;
             width: 300px;
-            height: 600px;
+            height: 250px;
             overflow:hidden;
         }      
 
@@ -79,7 +79,7 @@
             top: 0;
             left: 0;
             width: 300px;
-            height: 600px;
+            height: 250px;
             overflow:hidden;
         }
 
@@ -88,28 +88,27 @@
             top: 0;
             left: 0;
             width: 300px;
-            height: 600px;
+            height: 250px;
             overflow:hidden;
-            background:url('./images/get_a_quote_orange_300x600_2x.png') no-repeat;
-            background-size: 300px 600px;
+            background:url('./images/get_a_quote_green_300x250_2x.png') no-repeat;
+            background-size: 300px 250px;
             background-position:0px 0px;
             cursor: pointer;
         }
-
 
         .copy_shadow {
             position: absolute;
             top: 0;
             left: 0;
-            width: 450px;
-            height: 700px;
+            width: 500px;
+            height: 480px;
             border:0;
         }
 
         .banner-border {
             position: absolute;
             width: 298px;
-            height: 598px;
+            height: 248px;
             border: 1px solid #222;
             pointer-events: none;
             z-index: 15;
@@ -120,7 +119,7 @@
        .exit{
             position: absolute;
             width: 300px;
-            height: 600px;
+            height: 250px;
             z-index: 18;
             top: 0;
             left: 0;
@@ -150,10 +149,10 @@
 
             function preload() {
                 images = [
-                    './images/background_orange_300x600_2x.png',
-                    './images/copy_shadow_orange_300x600_2x.png',
-                    './images/dd_logo_300x600_2x.png',
-                    './images/get_a_quote_orange_300x600_2x.png',
+                    './images/background_green_300x250_2x.png',
+                    './images/copy_shadow_green_300x250_2x.png',
+                    './images/dd_logo_w_300x250_2x.png',
+                    './images/get_a_quote_green_300x250_2x.png',
                 ];
 
                 for (var i = 0; i < images.length; i++) {
@@ -187,41 +186,43 @@
 
              const tl = new TimelineMax();
              tl
-            .from(copyShadow,.8, {y:900, x:400, ease:Elastic.easeOut.config(1,1.2)},'+=.2')
+            .from(copyShadow,.8, {y:500, x:350, ease:Elastic.easeOut.config(1,1.6)},'+=.5')
             .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.05, ease:Elastic.easeOut.config(1.5,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
-            .to(copyShadow,.5,{rotation:2, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'6.0')
+            .to(copyShadow,.5,{rotation:1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'6.0')
             .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)})
-            .to(copyShadow,.5,{rotation:2, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'+=5.9')
+            .to(copyShadow,.5,{rotation:1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'+=5.9')
             .to(copyShadow,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
 
 
              const tl2 = new TimelineMax();
              tl2
-            .from(ddButtonWrapper,.7, {y:800, x:400, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
+            .from(ddButtonWrapper,.7, {y:500, x:350, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
             .to(ddButtonWrapper,.5,{rotation:-1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'5.9')
             .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)},'+=0.1')
             .to(ddButtonWrapper,.5,{rotation:-1, y:17, x:17, scale: 1.05, ease:Elastic.easeIn.config(.5,.9)},'+=6')
             .to(ddButtonWrapper,.8,{rotation:0, y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.6,.9)});
 
 
-            const tl3 = new TimelineMax({paused: true});
-            tl3
-            .to(ddButton, .25, {scale: 1.1, y:0, x:12, ease:Sine.easeInOut})
+             const tl3 = new TimelineMax({paused: true});
+             tl3
+             .to(ddButton, .25, {scale: 1.1, y:-5, x:15, ease:Sine.easeInOut})
 
-            ddButton.addEventListener("mouseenter", function(){
-            tl3.play();
-            })
+             ddButton.addEventListener("mouseenter", function(){
+             tl3.play();
+             })
 
-            ddButton.addEventListener("mouseleave", function(){
-            tl3.reverse();
-            });
+             ddButton.addEventListener("mouseleave", function(){
+             tl3.reverse();
+             });
+            
 
-            setTimeout(function(){
-              console.log('done');
+
+              setTimeout(function(){
+                 console.log('done');
                 },15000)
             }
 
-            window.onload = function(e) {
+              window.onload = function(e) {
               preload();
             }
 
@@ -229,20 +230,19 @@
     </script>
     </head>
 <body>
-    <div id="container" class="container b-300x600" style="background-color: #fff;">
+    <div id="container" class="container b-300x250" style="background-color: #fff;">
         <div class="banner-content">
-            </a>
             <div class="dot_background"></div>
-            <img src="" alt="" class="dd_logo" />
             <div class="bounce_box">
                 <img src="" alt="" class="copy_shadow" />
 
                 <div class="dd_button_wrapper">
-                     <a href="javascript:void(window.open(window.clickTag))">
+                    <a href="javascript:void(window.open(window.clickTag))">
                        <div class="dd_button"></div>
                     </a>
                 </div>
-            </div>        
+            </div> 
+            <img src="" alt="" class="dd_logo" />   
         </div><!-- end banner content -->
         <div class="banner-border"></div>
      </div>
