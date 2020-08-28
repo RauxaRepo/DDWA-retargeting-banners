@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="ad.size" content="width=728,height=90">
+    <script type="text/javascript">
+        var clickTag = "https://www.google.com/";
+    </script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_2.0.1_min.js"></script>
+
+    <style type="text/css">
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        * { 
+            padding: 0;
+        }
+        .container {
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+
+        }
+        .banner-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            display: none;
+        }
+        .banner-content.banner-content--active {
+            opacity: 1;
+            display: block;
+        }
+
+        .b-728x90 {
+            width: 728px;
+            height: 90px;
+            padding: 0;
+        }
+
+       .dot_background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 90px;
+            overflow:hidden;
+            background:url('./images/background_orange_728x90_2x.png') no-repeat;
+            background-size: 728px 90px;
+            background-position:0px 0px;
+            background-color: #ea9b7f;
+        }
+
+        .dd_logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 90px;
+            border:0;
+        }
+
+        .bounce_box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 90px;
+            overflow:hidden;
+        }      
+
+        .dd_button_wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 90px;
+            overflow:hidden;
+        }
+
+        .dd_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 90px;
+            overflow:hidden;
+            background:url('./images/get_a_quote_orange_728x90_2x.png') no-repeat;
+            background-size: 728px 90px;
+            background-position:0px 0px;
+            cursor: pointer;
+        }
+
+        .copy_shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 728px;
+            height: 200px;
+            border:0;
+        }
+
+        .banner-border {
+            position: absolute;
+            width: 726px;
+            height: 88px;
+            border: 1px solid #222;
+            pointer-events: none;
+            z-index: 15;
+            top: 0px;
+            left: 0px;
+        }
+
+       .exit{
+            position: absolute;
+            width: 728px;
+            height: 90px;
+            z-index: 18;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+
+        document.addEventListener("DOMContentLoaded", function(e) {
+
+            // variables
+            var loadedImage = 0;
+            var images = [];
+            var dotBackground = document.querySelector('.dot_background');
+            var copyShadow = document.querySelector('.copy_shadow');
+            var ddLogo = document.querySelector('.dd_logo');
+            var ddButton = document.querySelector('.dd_button');
+            var bounceBox = document.querySelector('.bounce_box');
+            var ddButtonWrapper = document.querySelector('.dd_button_wrapper');
+            
+            // elements
+            var bannerContent = document.querySelector('.banner-content');
+
+
+
+
+            function preload() {
+                images = [
+                    './images/background_orange_728x90_2x.png',
+                    './images/copy_shadow_orange_728x90_2x.png',
+                    './images/dd_logo_w_728x90_2x.png',
+                    './images/get_a_quote_orange_728x90_2x.png',
+                ];
+
+                for (var i = 0; i < images.length; i++) {
+                    var imageObj = new Image();
+                    imageObj.src = images[i];
+                    imageObj.addEventListener("load", iLoad, false);
+                }
+               // console.log('Entering preload');
+            }
+            function iLoad() {
+                loadedImage++;
+                if (images.length == loadedImage) {
+                    dotBackground.src = images[0];
+                    copyShadow.src = images[1];
+                    ddLogo.src = images[2];
+                    ddButton.src = images[3];
+                    init();
+               }
+            }
+
+            function init() {
+                console.log('init');
+                bannerContent.classList.add('banner-content--active');
+
+                var loop = 0;
+
+              function checkLoop() {
+                 loop++; 
+                }
+
+
+             const tl = new TimelineMax();
+             tl
+            .from(copyShadow,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1.1)},'+=.5')
+            .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.06, ease:Elastic.easeOut.config(1.2,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
+            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'6.0')
+            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)})
+            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'+=5.9')
+            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
+
+
+             const tl2 = new TimelineMax();
+             tl2
+            .from(ddButtonWrapper,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
+            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'5.9')
+            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)},'+=.1')
+            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'+=6')
+            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
+
+
+             const tl3 = new TimelineMax({paused: true});
+             tl3
+             .to(ddButton, .25, {scale: 1.1, y:3, x:-24, ease:Sine.easeInOut})
+
+             ddButton.addEventListener("mouseenter", function(){
+             tl3.play();
+             })
+
+             ddButton.addEventListener("mouseleave", function(){
+             tl3.reverse();
+             });
+            
+
+
+              setTimeout(function(){
+                 console.log('done');
+                },15000)
+            }
+
+              window.onload = function(e) {
+              preload();
+            }
+
+        });
+    </script>
+    </head>
+<body>
+    <div id="container" class="container b-728x90" style="background-color: #fff;">
+        <div class="banner-content">
+            <div class="dot_background"></div>
+            <img src="" alt="" class="dd_logo" />   
+            <div class="bounce_box">
+                <img src="" alt="" class="copy_shadow" />
+                <div class="dd_button_wrapper">
+                    <a href="javascript:void(window.open(window.clickTag))">
+                       <div class="dd_button"></div>
+                    </a>
+                </div>
+            </div> 
+        </div><!-- end banner content -->
+        <div class="banner-border"></div>
+     </div>
+
+        
+  </body>
+</html>
