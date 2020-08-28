@@ -37,7 +37,7 @@
             display: block;
         }
 
-        .b-320x90 {
+        .b-320x50 {
             width: 320px;
             height: 50px;
             padding: 0;
@@ -49,20 +49,21 @@
             left: 0;
             width: 320px;
             height: 50px;
-            overflow:hidden;
-            background:url('./images/background_purple_320x50.jpg') no-repeat;
+            background:url('./images/background_purple_320x50_2x.png') no-repeat;
             background-size: 320px 50px;
             background-position:0px 0px;
-            background-color: #6f8db3;
         }
 
-        .dd_logo {
+        .ending_logo {
             position: absolute;
             top: 0;
             left: 0;
             width: 320px;
             height: 50px;
-            border:0;
+            background:url('./images/dd_logo_button_320x50_2x.png') no-repeat;
+            background-size: 320px 50px;
+            background-position:0px 0px;
+            background-color: #563d82;
         }
 
         .bounce_box {
@@ -90,9 +91,10 @@
             width: 320px;
             height: 50px;
             overflow:hidden;
-            background:url('./images/get_a_quote_purple_320x50_2x.png') no-repeat;
+            background:url('./images/dd_logo_button_320x50_2x.png') no-repeat;
             background-size: 320px 50px;
             background-position:0px 0px;
+            background-color: #563d82;
             cursor: pointer;
         }
 
@@ -100,14 +102,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 750px;
-            height: 204px;
+            width: 320px;
+            height: 148px;
             border:0;
         }
 
         .banner-border {
             position: absolute;
-            width: 326px;
+            width: 318px;
             height: 48px;
             border: 1px solid #222;
             pointer-events: none;
@@ -136,7 +138,6 @@
             var images = [];
             var dotBackground = document.querySelector('.dot_background');
             var copyShadow = document.querySelector('.copy_shadow');
-            var ddLogo = document.querySelector('.dd_logo');
             var ddButton = document.querySelector('.dd_button');
             var bounceBox = document.querySelector('.bounce_box');
             var ddButtonWrapper = document.querySelector('.dd_button_wrapper');
@@ -149,10 +150,9 @@
 
             function preload() {
                 images = [
-                    './images/background_purple_320x50.jpg',
+                    './images/background_purple_320x50_2x.png',
                     './images/copy_shadow_purple_320x50_2x.png',
-                    './images/dd_logo_w_320x50_2x.png',
-                    './images/get_a_quote_purple_320x50_2x.png',
+                    './images/dd_logo_button_320x50_2x.png',
                 ];
 
                 for (var i = 0; i < images.length; i++) {
@@ -167,8 +167,7 @@
                 if (images.length == loadedImage) {
                     dotBackground.src = images[0];
                     copyShadow.src = images[1];
-                    ddLogo.src = images[2];
-                    ddButton.src = images[3];
+                    ddButton.src = images[2];
                     init();
                }
             }
@@ -183,38 +182,15 @@
                  loop++; 
                 }
 
-
-             const tl = new TimelineMax();
+            TweenMax.set(ddButtonWrapper, {autoAlpha:0});
+             const tl = new TimelineMax({repeat:2});
              tl
-            .from(copyShadow,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1.1)},'+=.5')
-            .fromTo(bounceBox,.8,{y:-90, x:100, scale: 1.06, ease:Elastic.easeOut.config(1.2,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
-            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'6.0')
-            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)})
-            .to(copyShadow,.5,{y:15, x:15, scale: 1.06, ease:Elastic.easeIn.config(.6,.9)},'+=5.9')
-            .to(copyShadow,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
-
-
-             const tl2 = new TimelineMax();
-             tl2
-            .from(ddButtonWrapper,.8, {y:700, x:800, ease:Elastic.easeOut.config(0.8,1)},'+=.6')
-            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'5.9')
-            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)},'+=.1')
-            .to(ddButtonWrapper,.5,{y:12, x:12, scale: 1.05, ease:Elastic.easeIn.config(.6,.9)},'+=6')
-            .to(ddButtonWrapper,.8,{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(.7,.9)});
-
-
-             const tl3 = new TimelineMax({paused: true});
-             tl3
-             .to(ddButton, .25, {scale: 1.1, y:3, x:-24, ease:Sine.easeInOut})
-
-             ddButton.addEventListener("mouseenter", function(){
-             tl3.play();
-             })
-
-             ddButton.addEventListener("mouseleave", function(){
-             tl3.reverse();
-             });
-            
+            .from(copyShadow,.7, {y:600, x:600, ease:Elastic.easeOut.config(0.9,1.1)},'+=.1')
+            .fromTo(bounceBox,.7,{y:-90, x:100, scale: 1.06, ease:Elastic.easeOut.config(1.2,1)},{y:0, x:0, scale: 1, ease:Elastic.easeOut.config(1,1)},'-=.8')
+            .to([dotBackground,bounceBox],.1,{autoAlpha:0},'+=2.5')
+            .to(ddButtonWrapper,.1, {autoAlpha:1})
+            .to(ddButtonWrapper,.1, {autoAlpha:0},'+=1.9');
+ 
 
 
               setTimeout(function(){
@@ -232,20 +208,18 @@
 <body>
     <div id="container" class="container b-320x50" style="background-color: #fff;">
         <div class="banner-content">
-            <div class="dot_background"></div>
-            <img src="" alt="" class="dd_logo" />   
-            <div class="bounce_box">
-                <img src="" alt="" class="copy_shadow" />
-                <div class="dd_button_wrapper">
-                    <a href="javascript:(window.open(window.clickTag))">
-                       <div class="dd_button"></div>
-                    </a>
-                </div>
-            </div> 
-        </div><!-- end banner content -->
-        <div class="banner-border"></div>
+             <div class="ending_logo"></div>
+             <div class="dot_background"></div>
+             <div class="bounce_box">
+                 <img src="" alt="" class="copy_shadow" />
+             </div> 
+             <div class="dd_button_wrapper">
+                  <div class="dd_button"></div>
+             </div>       
+         </div><!-- end banner content -->
+         <div class="banner-border"></div>
+             <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
      </div>
-
-        
+      
   </body>
 </html>
